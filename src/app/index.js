@@ -1,6 +1,5 @@
-import Button from "./components/Button"
+import AppController from "./components/AppController";
+import Button from "./components/Button";
 
-
-customElements.define("custom-button", Button)
-
-console.log("cenoura")
+customElements.define("app-controller", AppController);
+customElements.define("custom-button", Button);
