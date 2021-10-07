@@ -1,7 +1,7 @@
-import { LitElement, css, html } from "lit";
-import ResetStylesMixin from "../mixins/ResetStyles";
+import { css, html } from "lit";
+import CustomElement from "../core/CustomElement";
 
-class AppController extends LitElement {
+class AppController extends CustomElement {
   static styles = css`
     .canvas {
       display: none;
@@ -13,10 +13,6 @@ class AppController extends LitElement {
     }
   `;
 
-  constructor() {
-    super();
-    console.log("app mounted");
-  }
 
   get _videoElm() {
     return this.renderRoot?.querySelector("video");
@@ -67,5 +63,4 @@ class AppController extends LitElement {
   }
 }
 
-
-export default ResetStylesMixin(AppController)
+export default AppController
