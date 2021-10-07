@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "dev": "vite",
+    "dev": "vite --host",
     "build": "vite build --emptyOutDir",
     "serve": "vite preview"
   },
@@ -12,5 +12,8 @@
   "license": "ISC",
   "devDependencies": {
     "vite": "^2.6.4"
+  },
+  "dependencies": {
+    "lit": "^2.0.0"
   }
 }
