@@ -1,6 +1,7 @@
 import { LitElement, css, html } from "lit";
+import ResetStylesMixin from "../mixins/ResetStyles";
 
-export default class AppController extends LitElement {
+class AppController extends LitElement {
   static styles = css`
     .canvas {
       display: none;
@@ -34,10 +35,6 @@ export default class AppController extends LitElement {
     this._openCamera({ exact: "environment" });
   }
 
-  /**
-   *
-   * @param {ConstrainDOMString} facing
-   */
   async _openCamera(facing) {
     const mediaGetter = !!navigator?.mediaDevices?.getUserMedia;
 
@@ -64,7 +61,11 @@ export default class AppController extends LitElement {
         <custom-button @click="${this._handleOpenRegularCamera}">
           Open regular camera
         </custom-button>
+        <p>sds</p>
       </div>
     `;
   }
 }
+
+
+export default ResetStylesMixin(AppController)
