@@ -3,11 +3,11 @@ import ResetStylesMixin from "../mixins/ResetStyles";
 
 class CustomElement extends LitElement {
   query(selector) {
-    this.renderRoot?.querySelector(selector);
+    return this.renderRoot?.querySelector(selector);
   }
 
   queryAll(selector) {
-    this.renderRoot?.querySelectorAll(selector);
+    return this.renderRoot?.querySelectorAll(selector);
   }
 }
 

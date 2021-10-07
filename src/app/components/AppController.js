@@ -1,35 +1,21 @@
-import { css, html } from "lit";
+import { html } from "lit";
 import CustomElement from "../core/CustomElement";
+import styles from "./AppController.styles";
 
 class AppController extends CustomElement {
-  static styles = css`
-    .canvas {
-      display: none;
-    }
+  static styles = styles;
 
-    video {
-      width: 100%;
-      height: 80vh;
-    }
-  `;
-
-
-  get _videoElm() {
-    return this.renderRoot?.querySelector("video");
-  }
-
-  _handleButtonClick(e) {
-    console.log(this);
-    console.log(e);
+  constructor() {
+    super();
   }
 
   _handleOpenFrontalCamera() {
     this._openCamera("user");
   }
 
-  _handleOpenRegularCamera() {
+  _handleOpenRegularCamera = () => {
     this._openCamera({ exact: "environment" });
-  }
+  };
 
   async _openCamera(facing) {
     const mediaGetter = !!navigator?.mediaDevices?.getUserMedia;
@@ -42,25 +28,22 @@ class AppController extends CustomElement {
         audio: false,
       });
 
-      this._videoElm.srcObject = stream;
+      this.query("video").srcObject = stream;
     }
   }
 
   render() {
     return html`
       <div class="main-layout">
-        <canvas class="canvas"></canvas>
-        <video autoplay></video>
-        <custom-button @click="${this._handleOpenFrontalCamera}">
-          Open frontal camera
-        </custom-button>
-        <custom-button @click="${this._handleOpenRegularCamera}">
-          Open regular camera
-        </custom-button>
-        <p>sds</p>
+        <div class="video-layer">
+          <video autoplay playsinline></video>
+        </div>
+        <div class="controls-layer">
+          <button @click="${this._handleOpenFrontalCamera}">camera</button>
+        </div>
       </div>
     `;
   }
 }
 
-export default AppController
+export default AppController;
