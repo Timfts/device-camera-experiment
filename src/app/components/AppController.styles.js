@@ -6,6 +6,7 @@ export default css`
     height: 100vh;
     overflow: hidden;
     position: relative;
+    perspective: 150em;
   }
 
   .video-layer {
@@ -14,9 +15,21 @@ export default css`
     position: absolute;
     top: 0;
     left: 0;
+    overflow: hidden;
+    perspective: 150em;
   }
 
-  .video-layer video {
+  .video-holder {
+    width: 100%;
+    height: 100%;
+    transition: all 0.5s ease;
+  }
+
+  .video-holder--rotated {
+    transform: rotateY(-180deg) scaleX(-1);
+  }
+
+  .video-holder video {
     height: 100%;
     position: absolute;
     top: 0;

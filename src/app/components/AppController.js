@@ -11,6 +11,7 @@ class AppController extends CustomElement {
     _loadedDeviceList: { state: true },
     _devicesList: { state: true },
     _isMobileDevice: { state: true },
+    _facing: { state: true },
   };
 
   constructor() {
@@ -18,24 +19,14 @@ class AppController extends CustomElement {
 
     this._loadedDeviceList = false;
     this._devicesList = [];
+    this._facing = "user";
     this.layout = new LayoutController(this);
+    this.stream = null;
   }
 
   connectedCallback() {
     super.connectedCallback();
-    this._detectAvailableCameras();
-    this._handleOpenFrontalCamera();
-  }
-
-  async _detectAvailableCameras() {
-    const devices = await navigator.mediaDevices.enumerateDevices();
-    const videoDevices = devices.filter(
-      (device) => device.kind === "videoinput"
-    );
-    console.log(videoDevices.toString());
-
-    this._devicesList = videoDevices;
-    this._loadedDeviceList = true;
+    this._openCamera();
   }
 
   _handleOpenGallery() {
@@ -50,13 +41,21 @@ class AppController extends CustomElement {
     this._openCamera({ exact: "environment" });
   };
 
-  async _openCamera(facing) {
+  _toggleFacing() {
+    if (this._facing === "user") {
+      this._facing = "environment";
+    } else {
+      this._facing = "user";
+    }
+  }
+
+  async _openCamera() {
     const mediaGetter = !!navigator?.mediaDevices?.getUserMedia;
 
     if (!!mediaGetter) {
       const stream = await navigator.mediaDevices.getUserMedia({
         video: {
-          facingMode: facing,
+          facingMode: this._facing,
           height: {
             ideal: 720,
             min: 480,
@@ -65,18 +64,40 @@ class AppController extends CustomElement {
         audio: false,
       });
 
+      this.stream = stream;
+
       this.query("video").srcObject = stream;
     }
+  }
+
+  _handleToggleCamera() {
+    const videoHolder = this.query(".video-holder");
+    videoHolder.classList.toggle("video-holder--rotated");
+
+    //close current tracks
+    this.stream?.getTracks()?.forEach((track) => {
+      track?.stop();
+    });
+
+    this._toggleFacing();
+    this._openCamera()
+
+    console.log("toggle");
   }
 
   render() {
     return html`
       <div class="main-layout">
         <div class="video-layer">
-          <video autoplay playsinline></video>
+          <div class="video-holder">
+            <video autoplay playsinline></video>
+          </div>
         </div>
         <div class="controls-slot">
-          <actions-bar></actions-bar>
+          <actions-bar
+            @open-gallery="${this._handleOpenGallery}"
+            @toggle-camera="${this._handleToggleCamera}"
+          ></actions-bar>
         </div>
       </div>
     `;
