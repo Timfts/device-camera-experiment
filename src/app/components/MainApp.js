@@ -84,7 +84,7 @@ class MainApp extends CustomElement {
     canvas.height = this.layout.height;
     canvas.width = this.layout.width;
 
-    const xCenter = video.videoWidth / 2 - this.layout.width / 2;
+    const xCenter = actualVideoWidth / 2 - this.layout.width / 2;
     const canvasContext = canvas.getContext("2d");
 
     alert(`
