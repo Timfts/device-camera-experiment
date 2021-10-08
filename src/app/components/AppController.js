@@ -17,10 +17,10 @@ class AppController extends CustomElement {
   constructor() {
     super();
 
+    this.layout = new LayoutController(this);
     this._loadedDeviceList = false;
     this._devicesList = [];
     this._facing = "user";
-    this.layout = new LayoutController(this);
     this.stream = null;
   }
 
@@ -32,14 +32,6 @@ class AppController extends CustomElement {
   _handleOpenGallery() {
     alert("opening gallery");
   }
-
-  _handleOpenFrontalCamera() {
-    this._openCamera("user");
-  }
-
-  _handleOpenRegularCamera = () => {
-    this._openCamera({ exact: "environment" });
-  };
 
   _toggleFacing() {
     if (this._facing === "user") {
@@ -65,7 +57,6 @@ class AppController extends CustomElement {
       });
 
       this.stream = stream;
-
       this.query("video").srcObject = stream;
     }
   }
@@ -78,11 +69,8 @@ class AppController extends CustomElement {
     this.stream?.getTracks()?.forEach((track) => {
       track?.stop();
     });
-
     this._toggleFacing();
     this._openCamera()
-
-    console.log("toggle");
   }
 
   render() {
@@ -99,6 +87,7 @@ class AppController extends CustomElement {
             @toggle-camera="${this._handleToggleCamera}"
           ></actions-bar>
         </div>
+        <app-gallery></app-gallery>
       </div>
     `;
   }

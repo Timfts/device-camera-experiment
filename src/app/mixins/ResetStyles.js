@@ -11,11 +11,7 @@ const ResetStylesMixin = (SuperElement) => {
           box-sizing: border-box;
           padding: 0;
           margin: 0;
-          -webkit-tap-highlight-color: transparent; 
-        }
-
-        :host {
-          color: red;
+          -webkit-tap-highlight-color: transparent;
         }
       `,
       inheritedCss,
