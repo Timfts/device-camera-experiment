@@ -23,7 +23,6 @@ class Gallery extends CustomElement {
       <div class="gallery ${classMap(componentClass)}">
         <div class="content-layer">
           <button @click="${() => this.emit("close-modal")}">close</button>
-          <p>cebola</p>
         </div>
       </div>
     `;

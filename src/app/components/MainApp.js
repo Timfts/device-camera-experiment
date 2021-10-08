@@ -1,10 +1,10 @@
 import { html } from "lit";
 import CustomElement from "../core/CustomElement";
-import styles from "./AppController.styles";
+import styles from "./MainApp.styles";
 import LayoutController from "../controllers/LayoutController";
 import ResetStylesMixin from "../mixins/ResetStyles";
 
-class AppController extends CustomElement {
+class MainApp extends CustomElement {
   static styles = styles;
 
   static properties = {
@@ -129,4 +129,4 @@ class AppController extends CustomElement {
   }
 }
 
-export default ResetStylesMixin(AppController);
+export default ResetStylesMixin(MainApp);
