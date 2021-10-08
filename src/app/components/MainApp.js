@@ -79,7 +79,15 @@ class MainApp extends CustomElement {
     const canvas = this.query("canvas");
     const video = this.query("video");
 
-    canvas.height = this.layout.height;
+    const pixelRatio = window.devicePixelRatio || 1;
+
+    const stats = `video: h: ${video.videoHeight}; w: ${video.videoWidth}
+                device h:${this.layout.height}; w:${this.layout.width}
+                pixel ratio: ${pixelRatio}`;
+
+    alert(stats);
+
+    /*     canvas.height = this.layout.height;
     canvas.width = this.layout.width;
 
     const xCenter = video.videoWidth / 2 - this.layout.width / 2;
@@ -100,7 +108,7 @@ class MainApp extends CustomElement {
     const virtualLink = document.createElement("a");
     virtualLink.download = "file.png";
     virtualLink.href = image;
-    virtualLink.click();
+    virtualLink.click(); */
   }
 
   render() {
