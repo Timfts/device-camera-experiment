@@ -95,11 +95,11 @@ class MainApp extends CustomElement {
       xCenter,
       0,
       this.layout.width,
-      actualVideoHeight,
+      this.layout.height,
       0,
       0,
       this.layout.width * -1,
-      actualVideoHeight
+      this.layout.height
     );
 
     const image = canvas.toDataURL("image/png");
