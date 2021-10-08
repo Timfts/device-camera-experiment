@@ -89,11 +89,11 @@ class MainApp extends CustomElement {
       xCenter,
       0,
       this.layout.width,
-      this.layout.height,
+      video.videoHeight,
       0,
       0,
       this.layout.width * -1,
-      this.layout.height
+      video.videoHeight
     );
     const image = canvas.toDataURL("image/png");
     const virtualLink = document.createElement("a");
