@@ -52,7 +52,6 @@ class MainApp extends CustomElement {
           facingMode: this._facing,
           height: {
             ideal: 720,
-            min: 480,
           },
         },
         audio: false,
