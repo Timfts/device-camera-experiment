@@ -2,10 +2,7 @@ import { css } from "lit";
 
 export default css`
   :host {
-    position: fixed;
-    bottom: 0;
     width: 100%;
-    height: 85vh;
   }
 
   .gallery {
@@ -15,6 +12,9 @@ export default css`
     position: relative;
     border-radius: 20px 20px 0 0;
     overflow: hidden;
+    height: 60vh;
+    position: fixed;
+    bottom: 0;
   }
 
   .backdrop-layer,
