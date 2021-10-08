@@ -87,7 +87,7 @@ class MainApp extends CustomElement {
 
     alert(stats);
 
-    /*     canvas.height = this.layout.height;
+        canvas.height = this.layout.height;
     canvas.width = this.layout.width;
 
     const xCenter = video.videoWidth / 2 - this.layout.width / 2;
@@ -108,7 +108,7 @@ class MainApp extends CustomElement {
     const virtualLink = document.createElement("a");
     virtualLink.download = "file.png";
     virtualLink.href = image;
-    virtualLink.click(); */
+    virtualLink.click(); 
   }
 
   render() {
