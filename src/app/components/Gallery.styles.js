@@ -5,13 +5,13 @@ export default css`
     position: fixed;
     bottom: 0;
     width: 100%;
+    height: 85vh;
   }
 
   .gallery {
-    height: 50px;
+    height: 100%;
     bottom: 0;
     width: 100%;
-    height: 85vh;
     position: relative;
     border-radius: 20px 20px 0 0;
     overflow: hidden;
