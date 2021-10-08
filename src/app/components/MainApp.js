@@ -81,8 +81,8 @@ class MainApp extends CustomElement {
     const actualVideoHeight = Math.min(video.videoWidth, video.videoHeight);
     const actualVideoWidth = Math.max(video.videoWidth, video.videoHeight);
 
-    canvas.height = this.layout.height;
-    canvas.width = this.layout.width;
+    canvas.height = actualVideoHeight;
+    canvas.width = actualVideoWidth;
 
     const xCenter = actualVideoWidth / 2 - this.layout.width / 2;
     const canvasContext = canvas.getContext("2d");
@@ -97,18 +97,8 @@ class MainApp extends CustomElement {
       videoheight: ${video.videoHeight}
     `);
 
-    canvasContext.scale(-1, 1);
-    canvasContext.drawImage(
-      video,
-      xCenter,
-      0,
-      this.layout.width,
-      this.layout.height,
-      0,
-      0,
-      this.layout.width * -1,
-      this.layout.height
-    );
+    /* canvasContext.scale(-1, 1); */
+    canvasContext.drawImage(video, 0,0);
 
     const image = canvas.toDataURL("image/png");
     const virtualLink = document.createElement("a");
