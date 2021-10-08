@@ -56,8 +56,10 @@ class AppController extends CustomElement {
       const stream = await navigator.mediaDevices.getUserMedia({
         video: {
           facingMode: facing,
-          height: this.layout.height,
-          width: this.layout.width,
+          height: {
+            ideal: 720,
+            min: 480,
+          },
         },
         audio: false,
       });
