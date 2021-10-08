@@ -78,11 +78,11 @@ class MainApp extends CustomElement {
   _handleTakePicture() {
     const canvas = this.query("canvas");
     const video = this.query("video");
-    const stats = `video: h: ${video.videoHeight}; w: ${video.videoWidth}
-                device h:${this.layout.height}; w:${this.layout.width}`;
 
     const actualVideoHeight = Math.min(video.videoWidth, video.videoHeight);
     const actualVideoWidth =  Math.max(video.videoWidth, video.videoHeight);
+
+    alert(`height: ${actualVideoHeight}, width:${actualVideoWidth}`)
 
     canvas.height = this.layout.height;
     canvas.width = this.layout.width;
