@@ -82,22 +82,19 @@ class AppController extends CustomElement {
     canvas.height = this.layout.height;
     canvas.width = this.layout.width;
     const xCenter = video.videoWidth / 2 - this.layout.width / 2;
-
-
-
-    canvas
-      .getContext("2d")
-      .drawImage(
-        video,
-        xCenter,
-        0,
-        this.layout.width,
-        this.layout.height,
-        0,
-        0,
-        this.layout.width,
-        this.layout.height
-      );
+    const canvasContext = canvas.getContext("2d");
+    canvasContext.scale(-1, 1);
+    canvasContext.drawImage(
+      video,
+      xCenter,
+      0,
+      this.layout.width,
+      this.layout.height,
+      0,
+      0,
+      this.layout.width * -1,
+      this.layout.height
+    );
     const image = canvas.toDataURL("image/png");
     const virtualLink = document.createElement("a");
     virtualLink.download = "file.png";
