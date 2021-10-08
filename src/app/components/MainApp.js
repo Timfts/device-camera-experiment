@@ -78,10 +78,9 @@ class MainApp extends CustomElement {
   _handleTakePicture() {
     const canvas = this.query("canvas");
     const video = this.query("video");
-    
-    const pixelRatio = window?.devicePixelRatio || 1
-    canvas.height = this.layout.height * pixelRatio;
-    canvas.width = this.layout.width * pixelRatio;
+
+    canvas.height = this.layout.height;
+    canvas.width = this.layout.width;
 
     const xCenter = video.videoWidth / 2 - this.layout.width / 2;
     const canvasContext = canvas.getContext("2d");
