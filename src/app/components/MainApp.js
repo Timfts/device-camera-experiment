@@ -78,16 +78,12 @@ class MainApp extends CustomElement {
   _handleTakePicture() {
     const canvas = this.query("canvas");
     const video = this.query("video");
-
-    const pixelRatio = window.devicePixelRatio || 1;
-
     const stats = `video: h: ${video.videoHeight}; w: ${video.videoWidth}
-                device h:${this.layout.height}; w:${this.layout.width}
-                pixel ratio: ${pixelRatio}`;
+                device h:${this.layout.height}; w:${this.layout.width}`;
 
-    alert(stats);
+    const actualVideoHeight = Math.min(video.videoWidth, video.videoHeight);
 
-        canvas.height = this.layout.height;
+    canvas.height = this.layout.height;
     canvas.width = this.layout.width;
 
     const xCenter = video.videoWidth / 2 - this.layout.width / 2;
@@ -98,17 +94,18 @@ class MainApp extends CustomElement {
       xCenter,
       0,
       this.layout.width,
-      video.videoHeight,
+      actualVideoHeight,
       0,
       0,
       this.layout.width * -1,
-      video.videoHeight
+      actualVideoHeight
     );
+    
     const image = canvas.toDataURL("image/png");
     const virtualLink = document.createElement("a");
     virtualLink.download = "file.png";
     virtualLink.href = image;
-    virtualLink.click(); 
+    virtualLink.click();
   }
 
   render() {
