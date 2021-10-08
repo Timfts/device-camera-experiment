@@ -82,11 +82,12 @@ class MainApp extends CustomElement {
                 device h:${this.layout.height}; w:${this.layout.width}`;
 
     const actualVideoHeight = Math.min(video.videoWidth, video.videoHeight);
+    const actualVideoWidth =  Math.max(video.videoWidth, video.videoHeight);
 
     canvas.height = this.layout.height;
     canvas.width = this.layout.width;
 
-    const xCenter = video.videoWidth / 2 - this.layout.width / 2;
+    const xCenter = actualVideoWidth / 2 - this.layout.width / 2;
     const canvasContext = canvas.getContext("2d");
     canvasContext.scale(-1, 1);
     canvasContext.drawImage(
@@ -100,7 +101,7 @@ class MainApp extends CustomElement {
       this.layout.width * -1,
       actualVideoHeight
     );
-    
+
     const image = canvas.toDataURL("image/png");
     const virtualLink = document.createElement("a");
     virtualLink.download = "file.png";
