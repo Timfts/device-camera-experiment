@@ -21,6 +21,10 @@ export default css`
     position: relative;
     z-index: 0;
     outline: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
   }
 
   .button:before {
@@ -49,5 +53,9 @@ export default css`
     height: 40px;
     color: white;
     background-color: rgba(0, 0, 0, 0.6);
+  }
+
+  .button-icon {
+    width: 20px;
   }
 `;
