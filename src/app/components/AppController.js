@@ -1,6 +1,7 @@
 import { html } from "lit";
 import CustomElement from "../core/CustomElement";
 import styles from "./AppController.styles";
+import LayoutController from "../controllers/LayoutController";
 
 class AppController extends CustomElement {
   static styles = styles;
@@ -8,6 +9,7 @@ class AppController extends CustomElement {
   static properties = {
     _loadedDeviceList: { state: true },
     _devicesList: { state: true },
+    _isMobileDevice: { state: true },
   };
 
   constructor() {
@@ -15,11 +17,13 @@ class AppController extends CustomElement {
 
     this._loadedDeviceList = false;
     this._devicesList = [];
+    this.layout = new LayoutController(this);
   }
 
   connectedCallback() {
     super.connectedCallback();
     this._detectAvailableCameras();
+    this._handleOpenFrontalCamera();
   }
 
   async _detectAvailableCameras() {
@@ -27,10 +31,7 @@ class AppController extends CustomElement {
     const videoDevices = devices.filter(
       (device) => device.kind === "videoinput"
     );
-
-    const labels = videoDevices.reduce((acc, item) => `${acc} * ${item.label} \n`, '')
-
-    alert(labels)
+    console.log(videoDevices.toString());
 
     this._devicesList = videoDevices;
     this._loadedDeviceList = true;
@@ -39,12 +40,6 @@ class AppController extends CustomElement {
   _handleOpenGallery() {
     alert("opening gallery");
   }
-
-  _handleToggleCamera() {
-    console.log("toggleCamera");
-  }
-
-  _handleTakePicture() {}
 
   _handleOpenFrontalCamera() {
     this._openCamera("user");
@@ -61,6 +56,8 @@ class AppController extends CustomElement {
       const stream = await navigator.mediaDevices.getUserMedia({
         video: {
           facingMode: facing,
+          height: this.layout.height,
+          width: this.layout.width,
         },
         audio: false,
       });

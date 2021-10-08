@@ -19,6 +19,7 @@ export default css`
   .video-layer video {
     width: 100%;
     height: 100%;
+    transform: scaleX(-1);
   }
 
   .controls-layer {

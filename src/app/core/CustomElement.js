@@ -1,4 +1,4 @@
-import { LitElement, css, html } from "lit";
+import { LitElement } from "lit";
 import ResetStylesMixin from "../mixins/ResetStyles";
 
 class CustomElement extends LitElement {
