@@ -77,13 +77,10 @@ class MainApp extends CustomElement {
   _handleTakePicture() {
     const canvas = this.query("canvas");
     const video = this.query("video");
-
     canvas.height = video.videoHeight;
     canvas.width = video.videoWidth;
-
     const canvasContext = canvas.getContext("2d");
 
-    /* canvasContext.scale(-1, 1); */
     if (this._facing === "user") {
       canvasContext.translate(canvas.width, 0);
       canvasContext.scale(-1, 1);
