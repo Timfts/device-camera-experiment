@@ -75,6 +75,36 @@ class AppController extends CustomElement {
     this._openCamera();
   }
 
+  _handleTakePicture() {
+    const canvas = this.query("canvas");
+    const video = this.query("video");
+
+    canvas.height = this.layout.height;
+    canvas.width = this.layout.width;
+    const xCenter = video.videoWidth / 2 - this.layout.width / 2;
+
+
+
+    canvas
+      .getContext("2d")
+      .drawImage(
+        video,
+        xCenter,
+        0,
+        this.layout.width,
+        this.layout.height,
+        0,
+        0,
+        this.layout.width,
+        this.layout.height
+      );
+    const image = canvas.toDataURL("image/png");
+    const virtualLink = document.createElement("a");
+    virtualLink.download = "file.png";
+    virtualLink.href = image;
+    virtualLink.click();
+  }
+
   render() {
     return html`
       <div class="main-layout">
@@ -87,7 +117,11 @@ class AppController extends CustomElement {
           <actions-bar
             @open-gallery="${this._handleToggleGallery}"
             @toggle-camera="${this._handleToggleCamera}"
+            @take-picture="${this._handleTakePicture}"
           ></actions-bar>
+        </div>
+        <div class="canvas-holder">
+          <canvas></canvas>
         </div>
         <app-gallery
           ?isOpen="${this._isGalleryOpen}"
