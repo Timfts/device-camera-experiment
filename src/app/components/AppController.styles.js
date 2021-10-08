@@ -26,7 +26,7 @@ export default css`
   }
 
   .video-holder--rotated {
-    transform: rotateY(-180deg) scaleX(-1);
+    transform: rotateY(-180deg);
   }
 
   .video-holder video {
