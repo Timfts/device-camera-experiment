@@ -12,6 +12,7 @@ class AppController extends CustomElement {
     _devicesList: { state: true },
     _isMobileDevice: { state: true },
     _facing: { state: true },
+    _isGalleryOpen: { state: true },
   };
 
   constructor() {
@@ -22,6 +23,7 @@ class AppController extends CustomElement {
     this._devicesList = [];
     this._facing = "user";
     this.stream = null;
+    this._isGalleryOpen = false;
   }
 
   connectedCallback() {
@@ -29,8 +31,8 @@ class AppController extends CustomElement {
     this._openCamera();
   }
 
-  _handleOpenGallery() {
-    alert("opening gallery");
+  _handleToggleGallery() {
+    this._isGalleryOpen = !this._isGalleryOpen;
   }
 
   _toggleFacing() {
@@ -70,7 +72,7 @@ class AppController extends CustomElement {
       track?.stop();
     });
     this._toggleFacing();
-    this._openCamera()
+    this._openCamera();
   }
 
   render() {
@@ -83,11 +85,14 @@ class AppController extends CustomElement {
         </div>
         <div class="controls-slot">
           <actions-bar
-            @open-gallery="${this._handleOpenGallery}"
+            @open-gallery="${this._handleToggleGallery}"
             @toggle-camera="${this._handleToggleCamera}"
           ></actions-bar>
         </div>
-        <app-gallery></app-gallery>
+        <app-gallery
+          ?isOpen="${this._isGalleryOpen}"
+          @close-modal="${this._handleToggleGallery}"
+        ></app-gallery>
       </div>
     `;
   }

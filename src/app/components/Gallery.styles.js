@@ -15,21 +15,16 @@ export default css`
     height: 60vh;
     position: fixed;
     bottom: 0;
-  }
-
-  .backdrop-layer,
-  .content-layer {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    top: 0;
-    border-radius: 20px 20px 0 0;
-  }
-
-  .backdrop-layer {
+    transform: translateY(100%);
+    transition: all 0.3s ease-out;
     background-color: rgba(255, 255, 255, 0.75);
     backdrop-filter: blur(20px);
     -webkit-backdrop-filter: blur(20px);
+    will-change: transform;
+  }
+
+  .gallery--open {
+    transform: translateY(0);
   }
 
   .content-layer {
