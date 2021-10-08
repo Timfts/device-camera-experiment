@@ -20,13 +20,14 @@ export default css`
     height: 100%;
     position: absolute;
     top: 0;
-    left:50%;
-    transform: translateX(-50%) scaleX(-1)
+    left: 50%;
+    transform: translateX(-50%) scaleX(-1);
   }
 
-  .controls-layer {
+  .controls-slot {
     position: absolute;
-    background-color: white;
     bottom: 0;
+    width: 100%;
+    height: 20vh;
   }
 `;

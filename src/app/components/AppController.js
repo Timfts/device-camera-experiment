@@ -2,6 +2,7 @@ import { html } from "lit";
 import CustomElement from "../core/CustomElement";
 import styles from "./AppController.styles";
 import LayoutController from "../controllers/LayoutController";
+import ResetStylesMixin from "../mixins/ResetStyles";
 
 class AppController extends CustomElement {
   static styles = styles;
@@ -74,13 +75,12 @@ class AppController extends CustomElement {
         <div class="video-layer">
           <video autoplay playsinline></video>
         </div>
-        <div class="controls-layer">
+        <div class="controls-slot">
           <actions-bar></actions-bar>
-          <button @click="${this._handleOpenFrontalCamera}">camera</button>
         </div>
       </div>
     `;
   }
 }
 
-export default AppController;
+export default ResetStylesMixin(AppController);
