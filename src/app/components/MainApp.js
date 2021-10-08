@@ -79,15 +79,24 @@ class MainApp extends CustomElement {
     const video = this.query("video");
 
     const actualVideoHeight = Math.min(video.videoWidth, video.videoHeight);
-    const actualVideoWidth =  Math.max(video.videoWidth, video.videoHeight);
-
-    alert(`height: ${actualVideoHeight}, width:${actualVideoWidth}`)
+    const actualVideoWidth = Math.max(video.videoWidth, video.videoHeight);
 
     canvas.height = this.layout.height;
     canvas.width = this.layout.width;
 
-    const xCenter = actualVideoWidth / 2 - this.layout.width / 2;
+    const xCenter = video.videoWidth / 2 - this.layout.width / 2;
     const canvasContext = canvas.getContext("2d");
+
+    alert(`
+      xCenter: ${xCenter}
+      layoutWidth: ${this.layout.width}
+      layoutHeight: ${this.layout.height}
+      actualWidth: ${actualVideoWidth}
+      actualHeight: ${actualVideoHeight}
+      videoWidth: ${video.videoWidth}
+      videoheight: ${video.videoHeight}
+    `);
+
     canvasContext.scale(-1, 1);
     canvasContext.drawImage(
       video,
