@@ -78,29 +78,17 @@ class MainApp extends CustomElement {
     const canvas = this.query("canvas");
     const video = this.query("video");
 
-    const actualVideoHeight = Math.min(video.videoWidth, video.videoHeight);
-    const actualVideoWidth = Math.max(video.videoWidth, video.videoHeight);
-
     canvas.height = video.videoHeight;
     canvas.width = video.videoWidth;
 
-    const xCenter = actualVideoWidth / 2 - this.layout.width / 2;
     const canvasContext = canvas.getContext("2d");
 
-    alert(`
-      xCenter: ${xCenter}
-      layoutWidth: ${this.layout.width}
-      layoutHeight: ${this.layout.height}
-      actualWidth: ${actualVideoWidth}
-      actualHeight: ${actualVideoHeight}
-      videoWidth: ${video.videoWidth}
-      videoheight: ${video.videoHeight}
-    `);
-
     /* canvasContext.scale(-1, 1); */
-    canvasContext.drawImage(video, 0,0);
-
-    const croppedImage = canvasContext.get
+    if (this._facing === "user") {
+      canvasContext.translate(canvas.width, 0);
+      canvasContext.scale(-1, 1);
+    }
+    canvasContext.drawImage(video, 0, 0);
 
     const image = canvas.toDataURL("image/png");
     const virtualLink = document.createElement("a");
