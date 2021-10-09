@@ -19,9 +19,6 @@ export default css`
     perspective: 150em;
   }
 
-  .canvas-holder {
-    display: none;
-  }
 
   .video-holder {
     width: 100%;

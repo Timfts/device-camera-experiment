@@ -75,7 +75,7 @@ class MainApp extends CustomElement {
   }
 
   _handleTakePicture() {
-    const canvas = this.query("canvas");
+    const canvas = document.createElement("canvas");
     const video = this.query("video");
     canvas.height = video.videoHeight;
     canvas.width = video.videoWidth;
@@ -108,9 +108,6 @@ class MainApp extends CustomElement {
             @toggle-camera="${this._handleToggleCamera}"
             @take-picture="${this._handleTakePicture}"
           ></actions-bar>
-        </div>
-        <div class="canvas-holder">
-          <canvas></canvas>
         </div>
         <app-gallery
           ?isOpen="${this._isGalleryOpen}"
