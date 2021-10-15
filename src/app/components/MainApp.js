@@ -37,7 +37,7 @@ class MainApp extends CustomElement {
 
   _toggleFacing() {
     if (this._facing === "user") {
-      this._facing = "environment";
+      this._facing = { exact: "environment" };
     } else {
       this._facing = "user";
     }
