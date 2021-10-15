@@ -50,9 +50,9 @@ class MainApp extends CustomElement {
       const stream = await navigator.mediaDevices.getUserMedia({
         video: {
           facingMode: this._facing,
-          height: {
+          /* height: {
             ideal: 720,
-          },
+          }, */
         },
         audio: false,
       });
