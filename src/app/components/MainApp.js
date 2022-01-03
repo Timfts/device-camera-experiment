@@ -1,11 +1,10 @@
-import { html } from "lit";
+import { html, unsafeCSS } from "lit";
 import CustomElement from "../core/CustomElement";
-import styles from "./MainApp.styles";
 import LayoutController from "../controllers/LayoutController";
-import ResetStylesMixin from "../mixins/ResetStyles";
+import styles from "./MainApp.scss";
 
 class MainApp extends CustomElement {
-  static styles = styles;
+  static styles = unsafeCSS(styles);
 
   static properties = {
     _loadedDeviceList: { state: true },
@@ -118,4 +117,4 @@ class MainApp extends CustomElement {
   }
 }
 
-export default ResetStylesMixin(MainApp);
+export default MainApp;

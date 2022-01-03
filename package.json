@@ -11,6 +11,9 @@
   "author": "",
   "license": "ISC",
   "devDependencies": {
+    "@vitejs/plugin-legacy": "^1.6.4",
+    "autoprefixer": "^10.4.1",
+    "sass": "^1.45.2",
     "vite": "^2.6.4"
   },
   "dependencies": {

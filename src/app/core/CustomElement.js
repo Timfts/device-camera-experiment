@@ -1,5 +1,4 @@
 import { LitElement } from "lit";
-import ResetStylesMixin from "../mixins/ResetStyles";
 
 class CustomElement extends LitElement {
   query(selector) {
@@ -22,4 +21,4 @@ class CustomElement extends LitElement {
   }
 }
 
-export default ResetStylesMixin(CustomElement);
+export default CustomElement;

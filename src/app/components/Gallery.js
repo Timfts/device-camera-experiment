@@ -1,12 +1,11 @@
-import { html } from "lit";
+import { html, unsafeCSS } from "lit";
 import { classMap } from "lit/directives/class-map.js";
 import CustomElement from "../core/CustomElement";
-import ResetStylesMixin from "../mixins/ResetStyles";
 
-import styles from "./Gallery.styles";
+import styles from "./Gallery.scss";
 
 class Gallery extends CustomElement {
-  static styles = styles;
+  static styles = unsafeCSS(styles);
   static properties = {
     isOpen: { type: Boolean, reflect: true },
   };
@@ -29,4 +28,4 @@ class Gallery extends CustomElement {
   }
 }
 
-export default ResetStylesMixin(Gallery);
+export default Gallery;

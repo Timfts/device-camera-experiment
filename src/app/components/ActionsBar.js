@@ -1,10 +1,10 @@
-import { html } from "lit";
+import { html, unsafeCSS } from "lit";
 import CustomElement from "../core/CustomElement";
-import styles from "./ActionsBar.styles";
-import ResetStylesMixin from "../mixins/ResetStyles";
+import styles from "./ActionsBar.scss"
+
 
 class ActionsBar extends CustomElement {
-  static styles = styles;
+  static styles = unsafeCSS(styles);
 
   render() {
     return html`
@@ -71,4 +71,4 @@ class ActionsBar extends CustomElement {
   }
 }
 
-export default ResetStylesMixin(ActionsBar);
+export default ActionsBar;
