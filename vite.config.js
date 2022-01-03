@@ -5,6 +5,7 @@ import path from "path"
 export default defineConfig({
   root: "src/",
   publicDir: "public/",
+  base: "/device-camera-experiment/",
   build: {
     outDir: "../dist",
   },
