@@ -2,7 +2,7 @@
 
 simple experiment to explore devices cameras with javascript
 
-live on [camera-device-exp.netlify.app/](camera-device-exp.netlify.app/) (prefer to open on a smartphone)
+app live on this [link](timfts.github.io/device-camera-experiment/) (prefer to open on a smartphone)
 
 
 
