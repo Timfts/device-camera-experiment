@@ -2,7 +2,7 @@
 
 simple experiment to explore devices cameras with javascript
 
-app live on this [link](timfts.github.io/device-camera-experiment/) (prefer to open on a smartphone)
+app live on this [link](https://timfts.github.io/device-camera-experiment/) (prefer to open on a smartphone)
 
 
 
